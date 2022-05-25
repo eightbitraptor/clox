@@ -7,10 +7,12 @@ clisp_src = files(
   'common.h',
   'debug.h',
   'memory.h',
+  'value.h',
   'chunk.c',
   'debug.c',
   'main.c',
   'memory.c',
+  'value.c',
 )
 
 executable('clox', clisp_src)
