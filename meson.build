@@ -2,7 +2,7 @@ project('clox', 'c', version: '0.01', default_options: [
   'c_std=c99',
   'buildtype=debug'])
 
-clisp_src = files(
+clox_src = files(
   'chunk.h',
   'common.h',
   'debug.h',
@@ -15,4 +15,4 @@ clisp_src = files(
   'value.c',
 )
 
-executable('clox', clisp_src)
+executable('clox', clox_src)
