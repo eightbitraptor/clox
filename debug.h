@@ -3,7 +3,7 @@
 
 #include "chunk.h"
 
-void dissassembleChunk(Chunk *chunk, const char *name);
-int dissassembleInstruction(Chunk *chunk, int offset);
+void dissassembleChunk(chunk_t *chunk, const char *name);
+int dissassembleInstruction(chunk_t *chunk, int offset);
 
 #endif

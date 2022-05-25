@@ -10,7 +10,7 @@ simpleInstruction(const char *name, int offset)
 }
 
 void
-dissassembleChunk(Chunk *chunk, const char *name)
+dissassembleChunk(chunk_t *chunk, const char *name)
 {
     printf("== %s ==\n", name);
     for (int offset = 0; offset < chunk->count;)
@@ -20,7 +20,7 @@ dissassembleChunk(Chunk *chunk, const char *name)
 }
 
 int
-dissassembleInstruction(Chunk *chunk, int offset)
+dissassembleInstruction(chunk_t *chunk, int offset)
 {
     u8 instruction = chunk->code[offset];
     switch (instruction) {

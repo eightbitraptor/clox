@@ -5,16 +5,16 @@
 
 typedef enum {
     OP_RETURN,
-} OpCode;
+} opcode_t;
 
 typedef struct {
     int count;
     int capacity;
     u8* code;
-} Chunk;
+} chunk_t;
 
-void initChunk(Chunk *chunk);
-void freeChunk(Chunk *chunk);
-void writeChunk(Chunk *chunk, u8 byte);
+void initChunk(chunk_t *chunk);
+void freeChunk(chunk_t *chunk);
+void writeChunk(chunk_t *chunk, u8 byte);
 
 #endif
