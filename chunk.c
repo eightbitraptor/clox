@@ -4,7 +4,7 @@
 #include "memory.h"
 
 void 
-initChunk(chunk_t *chunk)
+chunk_init(chunk_t *chunk)
 {
     chunk->count = 0;
     chunk->capacity = 0;
@@ -12,14 +12,14 @@ initChunk(chunk_t *chunk)
 }
 
 void
-freeChunk(chunk_t *chunk)
+chunk_free(chunk_t *chunk)
 {
     FREE_ARRAY(u8, chunk->code, chunk->capacity);
-    initChunk(chunk);
+    chunk_init(chunk);
 }
 
 void
-writeChunk(chunk_t *chunk, u8 byte)
+chunk_write(chunk_t *chunk, u8 byte)
 {
     if (chunk->capacity < chunk->count + 1)
     {

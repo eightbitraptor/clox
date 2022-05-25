@@ -5,12 +5,12 @@
 int main(int argc, const char* argv[])
 {
     chunk_t chunk;
-    initChunk(&chunk);
-    writeChunk(&chunk, OP_RETURN);
+    chunk_init(&chunk);
+    chunk_write(&chunk, OP_RETURN);
 
-    dissassembleChunk(&chunk, "test chunk");
+    dissassemble_chunk(&chunk, "test chunk");
 
-    freeChunk(&chunk);
+    chunk_free(&chunk);
 
     return 0;
 }

@@ -7,14 +7,17 @@ typedef enum {
     OP_RETURN,
 } opcode_t;
 
+/* 
+ * chunk_t -> this is basically an iseq in Ruby parlance I think
+ */
 typedef struct {
     int count;
     int capacity;
     u8* code;
 } chunk_t;
 
-void initChunk(chunk_t *chunk);
-void freeChunk(chunk_t *chunk);
-void writeChunk(chunk_t *chunk, u8 byte);
+void chunk_init(chunk_t *chunk);
+void chunk_free(chunk_t *chunk);
+void chunk_write(chunk_t *chunk, u8 byte);
 
 #endif
