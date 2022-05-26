@@ -9,6 +9,12 @@ vm_run()
 {
 #define READ_BYTE() (*vm.ip++)
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
+#define BINARY_OP(op) \
+    do { \
+        double b = stack_pop(); \
+        double a = stack_pop(); \
+        stack_push(a op b); \
+    } while(false)
 
     for (;;) {
 #if DEBUG_TRACE_EXECUTION
@@ -29,6 +35,10 @@ vm_run()
                 stack_push(constant);
                 break;
             }
+            case OP_ADD: BINARY_OP(+); break;
+            case OP_SUBTRACT: BINARY_OP(-); break;
+            case OP_MULTIPLY: BINARY_OP(*); break;
+            case OP_DIVIDE: BINARY_OP(/); break;
             case OP_NEGATE: {
                 stack_push(-stack_pop());
                 break;
