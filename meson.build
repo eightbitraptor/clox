@@ -8,11 +8,13 @@ clox_src = files(
   'debug.h',
   'memory.h',
   'value.h',
+  'vm.h',
   'chunk.c',
   'debug.c',
   'main.c',
   'memory.c',
   'value.c',
+  'vm.c',
 )
 
 executable('clox', clox_src)
