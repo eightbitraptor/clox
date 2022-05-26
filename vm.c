@@ -53,6 +53,7 @@ vm_run()
 
 #undef READ_BYTE
 #undef READ_CONSTANT
+#undef BINARY_OP
 }
 
 static void
