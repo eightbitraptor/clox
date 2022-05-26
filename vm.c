@@ -29,6 +29,10 @@ vm_run()
                 stack_push(constant);
                 break;
             }
+            case OP_NEGATE: {
+                stack_push(-stack_pop());
+                break;
+            }
             case OP_RETURN: {
                 value_print(stack_pop());
                 printf("\n");

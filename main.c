@@ -13,6 +13,7 @@ int main(int argc, const char* argv[])
     int constant = chunk_add_constant(&chunk, 1.2);
     chunk_write(&chunk, OP_CONSTANT, 123);
     chunk_write(&chunk, constant, 123);
+    chunk_write(&chunk, OP_NEGATE, 123);
     chunk_write(&chunk, OP_RETURN, 123);
 
     //dissassemble_chunk(&chunk, "test chunk");
