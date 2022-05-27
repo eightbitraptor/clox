@@ -3,6 +3,7 @@
 
 #include "chunk.h"
 #include "value.h"
+#include "memory.h"
 
 #define STACK_MAX 256
 
@@ -18,6 +19,8 @@ typedef enum {
     INTERPRET_COMPILER_ERROR,
     INTERPRET_RUNTIME_ERROR,
 } vm_result_t;
+
+vm_t *vm;
 
 void vm_init();
 void vm_free();
