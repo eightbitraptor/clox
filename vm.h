@@ -12,8 +12,6 @@ typedef struct {
     u8 *ip;
     value_t stack[STACK_MAX];
     value_t *stack_top;
-
-    heap_node_t *heap;
 } vm_t;
 
 typedef enum {

@@ -7,6 +7,7 @@ int main(int argc, const char* argv[])
 {
     chunk_t chunk;
 
+    objspace_init();
     vm_init();
     chunk_init(&chunk);
 
@@ -35,5 +36,6 @@ int main(int argc, const char* argv[])
     vm_free();
     chunk_free(&chunk);
 
+    objspace_free();
     return 0;
 }

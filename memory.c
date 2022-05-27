@@ -8,8 +8,8 @@
 #if HEAP_DEBUG
 static void
 dump_heap(const char *op, uintptr_t highlight) {
-    heap_node_t *start = vm->heap;
-    heap_node_t *node = (heap_node_t *)vm->heap;
+    heap_node_t *start = objspace.heap;
+    heap_node_t *node = (heap_node_t *)objspace.heap;
 
     printf("--- HEAP_DUMP_START(%s):\n", op);
     while(node) {
@@ -45,6 +45,18 @@ reallocate(void *pointer, size_t old_size, size_t new_size)
     return result;
 }
 
+void
+objspace_init()
+{
+    objspace.heap = heap_init();
+}
+
+void
+objspace_free()
+{
+    free(objspace.heap);
+}
+
 void *
 heap_init()
 {
@@ -65,7 +77,7 @@ void *
 clox_malloc(size_t requested_size)
 {
     heap_node_t *allocated_node;
-    heap_node_t *node = (heap_node_t *)vm->heap;
+    heap_node_t *node = (heap_node_t *)objspace.heap;
     size_t allocation_size = requested_size + HEAP_NODE_SIZE;
 
     // get the first unused node in the heap
@@ -95,7 +107,6 @@ clox_malloc(size_t requested_size)
 
         return (void *)allocated_node->data;
     }
-
     return NULL;
 }
 
@@ -119,9 +130,12 @@ clox_free(void *ptr)
         if (next_node->next != NULL) {
             next_node->next->prev = node;
         }
-        CLOX_ASSERT(((uintptr_t)node + HEAP_NODE_SIZE + node->size) 
-                == (uintptr_t)node->next);
-        fprintf(stderr, "assert\n");
+#if CLOX_CHECK_MODE
+        if (node->next) {
+            CLOX_ASSERT(((uintptr_t)node + HEAP_NODE_SIZE + node->size) 
+                    == (uintptr_t)node->next);
+        }
+#endif
     }
     // same again, but with the previous node. If the previous node is unused
     // adjust the previous nodes size to consume this node, and set the linked
@@ -138,7 +152,7 @@ clox_free(void *ptr)
         }
     }
 #if HEAP_DEBUG
-        dump_heap("free: end", (uintptr_t)node);
+    dump_heap("free: end", (uintptr_t)node);
 #endif
 }
 

@@ -63,15 +63,14 @@ stack_reset()
 void
 vm_init()
 {
-    vm = malloc(sizeof(vm_t));
-    vm->heap = heap_init();
+    vm = clox_malloc(sizeof(vm_t));
     stack_reset();
 }
 
 void
 vm_free()
 {
-    free(vm->heap);
+    clox_free(vm);
 }
 
 vm_result_t
