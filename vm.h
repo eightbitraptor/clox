@@ -3,6 +3,7 @@
 
 #include "chunk.h"
 #include "value.h"
+#include "memory.h"
 
 #define STACK_MAX 256
 
@@ -11,6 +12,8 @@ typedef struct {
     u8 *ip;
     value_t stack[STACK_MAX];
     value_t *stack_top;
+
+    heap_node_t *heap;
 } vm_t;
 
 typedef enum {
@@ -18,6 +21,8 @@ typedef enum {
     INTERPRET_COMPILER_ERROR,
     INTERPRET_RUNTIME_ERROR,
 } vm_result_t;
+
+vm_t *vm;
 
 void vm_init();
 void vm_free();

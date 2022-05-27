@@ -2,13 +2,11 @@
 #include "common.h"
 #include "vm.h"
 
-vm_t vm;
-
 static vm_result_t
 vm_run()
 {
-#define READ_BYTE() (*vm.ip++)
-#define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
+#define READ_BYTE() (*vm->ip++)
+#define READ_CONSTANT() (vm->chunk->constants.values[READ_BYTE()])
 #define BINARY_OP(op) \
     do { \
         double b = stack_pop(); \
@@ -59,38 +57,41 @@ vm_run()
 static void
 stack_reset()
 {
-    vm.stack_top = vm.stack;
+    vm->stack_top = vm->stack;
 }
 
 void
 vm_init()
 {
+    vm = malloc(sizeof(vm_t));
+    vm->heap = heap_init();
     stack_reset();
 }
 
 void
 vm_free()
 {
+    free(vm->heap);
 }
 
 vm_result_t
 vm_interpret(chunk_t *chunk)
 {
-    vm.chunk = chunk;
-    vm.ip = vm.chunk->code;
+    vm->chunk = chunk;
+    vm->ip = vm->chunk->code;
     return vm_run();
 }
 
 void
 stack_push(value_t v)
 {
-    *vm.stack_top = v;
-    vm.stack_top++;
+    *vm->stack_top = v;
+    vm->stack_top++;
 }
 
 value_t
 stack_pop()
 {
-    vm.stack_top--;
-    return *vm.stack_top;
+    vm->stack_top--;
+    return *vm->stack_top;
 }
