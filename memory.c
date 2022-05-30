@@ -5,6 +5,8 @@
 #include "memory.h"
 #include "vm.h"
 
+objspace_t objspace = {0};
+
 #if HEAP_DEBUG
 static void
 dump_heap(const char *op, uintptr_t highlight) {

@@ -20,7 +20,7 @@ typedef struct {
     heap_node_t *heap;
 } objspace_t;
 
-objspace_t objspace;
+extern objspace_t objspace;
 
 #define HEAP_INIT_SIZE 256 * 1024
 #define HEAP_NODE_SIZE sizeof(heap_node_t)

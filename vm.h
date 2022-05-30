@@ -20,7 +20,7 @@ typedef enum {
     INTERPRET_RUNTIME_ERROR,
 } vm_result_t;
 
-vm_t *vm;
+extern vm_t *vm;
 
 void vm_init();
 void vm_free();

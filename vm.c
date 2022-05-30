@@ -2,6 +2,8 @@
 #include "common.h"
 #include "vm.h"
 
+vm_t *vm;
+
 static vm_result_t
 vm_run()
 {
