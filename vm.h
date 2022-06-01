@@ -24,7 +24,7 @@ extern vm_t *vm;
 
 void vm_init();
 void vm_free();
-vm_result_t vm_interpret(chunk_t *chunk);
+vm_result_t vm_interpret(const char *source);
 
 void stack_push(value_t v);
 value_t stack_pop();

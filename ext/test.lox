@@ -1,0 +1,7 @@
+fun foo(var, baz) {
+  // this is a comment
+  print "string";
+  if (!var == nil) {
+    qux = var + 5 * baz
+  };
+}

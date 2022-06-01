@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "common.h"
 #include "vm.h"
+#include "compiler.h"
 
 vm_t *vm;
 
@@ -76,11 +77,10 @@ vm_free()
 }
 
 vm_result_t
-vm_interpret(chunk_t *chunk)
+vm_interpret(const char *source)
 {
-    vm->chunk = chunk;
-    vm->ip = vm->chunk->code;
-    return vm_run();
+    compile(source);
+    return INTERPRET_OK;
 }
 
 void
