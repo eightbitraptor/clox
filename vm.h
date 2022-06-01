@@ -21,9 +21,9 @@ typedef enum {
 
 extern vm_t *vm;
 
-void vm_init();
-void vm_free();
+void vm_init(void);
+void vm_free(void);
 vm_result_t vm_interpret(const char *source);
 
 void stack_push(value_t v);
-value_t stack_pop();
+value_t stack_pop(void);

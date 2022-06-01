@@ -6,7 +6,7 @@
 vm_t *vm;
 
 static vm_result_t
-vm_run()
+vm_run(void)
 {
 #define READ_BYTE() (*vm->ip++)
 #define READ_CONSTANT() (vm->chunk->constants.values[READ_BYTE()])
@@ -58,20 +58,20 @@ vm_run()
 }
 
 static void
-stack_reset()
+stack_reset(void)
 {
     vm->stack_top = vm->stack;
 }
 
 void
-vm_init()
+vm_init(void)
 {
     vm = clox_malloc(sizeof(vm_t));
     stack_reset();
 }
 
 void
-vm_free()
+vm_free(void)
 {
     clox_free(vm);
 }
@@ -91,7 +91,7 @@ stack_push(value_t v)
 }
 
 value_t
-stack_pop()
+stack_pop(void)
 {
     vm->stack_top--;
     return *vm->stack_top;

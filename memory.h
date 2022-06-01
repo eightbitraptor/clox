@@ -34,9 +34,9 @@ extern objspace_t objspace;
 #define FREE_ARRAY(type, pointer, old_count) \
     reallocate(pointer, sizeof(type) * old_count, 0)
 
-void objspace_init();
-void objspace_free();
-void * heap_init();
+void objspace_init(void);
+void objspace_free(void);
+void * heap_init(void);
 
 void * clox_malloc(size_t);
 void * clox_calloc(int c, size_t size);

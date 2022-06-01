@@ -15,4 +15,3 @@ void value_array_write(value_array_t *arr, value_t value);
 void value_array_free(value_array_t *arr);
 
 void value_print(value_t value);
-

@@ -48,19 +48,19 @@ reallocate(void *pointer, size_t old_size, size_t new_size)
 }
 
 void
-objspace_init()
+objspace_init(void)
 {
     objspace.heap = heap_init();
 }
 
 void
-objspace_free()
+objspace_free(void)
 {
     free(objspace.heap);
 }
 
 void *
-heap_init()
+heap_init(void)
 {
     heap_node_t *heap_start = malloc(HEAP_INIT_SIZE);
     if (heap_start == NULL) {
