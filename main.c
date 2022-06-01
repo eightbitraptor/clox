@@ -15,12 +15,6 @@
 #include "vm.h"
 #include "debug.h"
 
-static inline vm_result_t
-interpret(char *line)
-{
-    return INTERPRET_OK;
-}
-
 static inline char *
 read_file(const char *path)
 {

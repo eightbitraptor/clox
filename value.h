@@ -1,5 +1,4 @@
-#ifndef CLOX_VALUE_H
-#define CLOX_VALUE_H
+#pragma once
 
 #include "common.h"
 
@@ -17,4 +16,3 @@ void value_array_free(value_array_t *arr);
 
 void value_print(value_t value);
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef CLOX_CHUNK_H
-#define CLOX_CHUNK_H
+#pragma once
 
 #include "common.h"
 #include "value.h"
@@ -29,5 +28,3 @@ void chunk_init(chunk_t *chunk);
 void chunk_free(chunk_t *chunk);
 void chunk_write(chunk_t *chunk, u8 byte, int line);
 int chunk_add_constant(chunk_t *chunk, value_t value);
-
-#endif

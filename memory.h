@@ -1,5 +1,4 @@
-#ifndef CLOX_MEMORY_H
-#define CLOX_MEMORY_H
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -45,5 +44,3 @@ void * clox_realloc(void *pointer, size_t size);
 void clox_free(void *ptr);
 
 void * reallocate(void *pointer, size_t old_size, size_t new_size);
-
-#endif
